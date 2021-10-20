@@ -7,4 +7,9 @@ class AppTypography {
         fontSize: 20,
         fontWeight: FontWeight.bold,
       );
+  static TextStyle get textSmall => GoogleFonts.poppins(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      );
 }
