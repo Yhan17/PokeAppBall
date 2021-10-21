@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
-
+import 'package:pokeappball/app/presentation/features/details/details_page.dart';
 import '../../features/home/home_page.dart';
 import '../../features/splash/splash_page.dart';
 
@@ -15,5 +15,6 @@ class AppRoutes {
           transition: Transition.rightToLeft,
           transitionDuration: const Duration(milliseconds: 500),
         ),
+        GetPage(name: '/details', page: () => const DetailsPage()),
       ];
 }
