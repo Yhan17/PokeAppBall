@@ -17,11 +17,12 @@ class _RoundContainerState extends State<RoundContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final heightContainer = MediaQuery.of(context).size.height < 600 ? MediaQuery.of(context).size.height : MediaQuery.of(context).size.height+30;
+
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -51,47 +52,62 @@ class _RoundContainerState extends State<RoundContainer> {
               const SizedBox(height: 10),
               const TextIconRow(icon:Icon(Icons.directions_run, color: Colors.white,size: 20,),text:'Movimentos',color: Color(0xFF5EBF62),),
               const SizedBox(height: 5),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Wrap(
-                  children: const [
-                    MyCustomChip(color: Color(0xFF282828),text: "mega-punch",),
-                    MyCustomChip(color: Color(0xFF5EBF62),text: "thunder-punch",),
-                    MyCustomChip(color: Color(0xFF282828),text: "pay-day",),
-                    MyCustomChip(color: Color(0xFF5EBF62),text: "slam",),
-                    MyCustomChip(color: Color(0xFF282828),text: "headbutt",),
-                    MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
-                    MyCustomChip(color: Color(0xFF282828),text: "take-down",),
-                    MyCustomChip(color: Color(0xFF282828),text: "mega-punch",),
-                    MyCustomChip(color: Color(0xFF5EBF62),text: "thunder-punch",),
-                    MyCustomChip(color: Color(0xFF282828),text: "pay-day",),
-                    MyCustomChip(color: Color(0xFF5EBF62),text: "slam",),
-                    MyCustomChip(color: Color(0xFF282828),text: "headbutt",),
-                    MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
-                    MyCustomChip(color: Color(0xFF282828),text: "take-down",),
-                  ],
-                ),
+              Wrap(
+                children: const [
+                  MyCustomChip(color: Color(0xFF282828),text: "mega-punch",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "thunder-punch",),
+                  MyCustomChip(color: Color(0xFF282828),text: "pay-day",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "slam",),
+                  MyCustomChip(color: Color(0xFF282828),text: "headbutt",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
+                  MyCustomChip(color: Color(0xFF282828),text: "take-down",),
+                  MyCustomChip(color: Color(0xFF282828),text: "mega-punch",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "thunder-punch",),
+                  MyCustomChip(color: Color(0xFF282828),text: "pay-day",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "slam",),
+                  MyCustomChip(color: Color(0xFF282828),text: "headbutt",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
+                  MyCustomChip(color: Color(0xFF282828),text: "take-down",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
+                  MyCustomChip(color: Color(0xFF282828),text: "take-down",),
+                  MyCustomChip(color: Color(0xFF282828),text: "mega-punch",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "thunder-punch",),
+                  MyCustomChip(color: Color(0xFF282828),text: "pay-day",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "slam",),
+                  MyCustomChip(color: Color(0xFF282828),text: "headbutt",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
+                  MyCustomChip(color: Color(0xFF282828),text: "take-down",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "thunder-punch",),
+                  MyCustomChip(color: Color(0xFF282828),text: "pay-day",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "slam",),
+                  MyCustomChip(color: Color(0xFF282828),text: "headbutt",),
+                  MyCustomChip(color: Color(0xFF5EBF62),text: "growl",),
+                  MyCustomChip(color: Color(0xFF282828),text: "take-down",),
+                ],
               ),
               const SizedBox(height: 10),
               const TextIconRow(icon:Icon(Icons.fitness_center, color: Colors.white,size: 20,),text:'Fisíco',color: Colors.blue,),
               const SizedBox(height: 5),
-              Wrap(
+              Column(
                 children:[
-                  Container(height: 70, decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [Text('Altura\n\n(0,72 cm)'),Text('Peso\n\n(6.9 kg)')],),
-                  ),),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Container(height: 80, decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [Text('Altura\n\n(0,72 cm)'),Text('Peso\n\n(6.9 kg)')],),
+                    ),),
+                  ),
                 ],
               ),
             ],

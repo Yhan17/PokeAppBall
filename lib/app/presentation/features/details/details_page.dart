@@ -20,8 +20,6 @@ class _DetailsPageState extends State<DetailsPage> {
         child: Stack(
           children: <Widget>[
             Container(
-              width: double.maxFinite,
-              height: heightContainer,
               decoration: const BoxDecoration(color: Color(0xFF282828)),
               child: Wrap(
                 children: const <Widget>[
@@ -37,7 +35,7 @@ class _DetailsPageState extends State<DetailsPage> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 145, left: 50),
+                padding: const EdgeInsets.only(top: 140, left: 50),
                 child: Align(
                     alignment: Alignment.center,
                     child: Image.asset(
