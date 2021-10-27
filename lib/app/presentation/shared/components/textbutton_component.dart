@@ -31,11 +31,14 @@ class TextButtonComponentState extends State<TextButtonComponent> {
             decoration: BoxDecoration(
                 color: widget.color,
                 borderRadius: const BorderRadius.all(Radius.circular(16))),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                widget.text,
-                style: AppTypography.textLarge,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  widget.text,
+                  style: AppTypography.textLarge,
+                ),
               ),
             ),
           ),

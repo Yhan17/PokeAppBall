@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokeappball/app/presentation/shared/components/chip_component.dart';
+import 'package:pokeappball/app/presentation/shared/components/mycustom_chip_component.dart';
 import 'package:pokeappball/app/presentation/shared/theme/app_typohraphy.dart';
 
-class HeaderComponent extends StatefulWidget {
-  const HeaderComponent({
+class HeaderInfo extends StatefulWidget {
+  const HeaderInfo({
     Key? key,
   }) : super(key: key);
   @override
-  _HeaderComponentState createState() => _HeaderComponentState();
+  _HeaderInfoState createState() => _HeaderInfoState();
 }
 
-class _HeaderComponentState extends State<HeaderComponent> {
+class _HeaderInfoState extends State<HeaderInfo> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,8 +29,16 @@ class _HeaderComponentState extends State<HeaderComponent> {
         const SizedBox(
           height: 5,
         ),
-        const ChipComponent(text: "Eletric", color: Color(0xFF5EBF62))
+        const Chip(
+          label: Text(
+            'Eletric',
+            style:  TextStyle(
+                color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor:  Color(0xFF5EBF62),
+        ),
       ],
     );
   }
+
 }
