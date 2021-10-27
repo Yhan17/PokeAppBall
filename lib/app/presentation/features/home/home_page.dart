@@ -28,7 +28,9 @@ class HomePage extends StatelessWidget {
                   height: 35,
                 ),
                 TextButtonComponent(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/details');
+                  },
                   text: "Pokedex",
                   color: Color(0xFF5EBF62),
                 ),
@@ -39,7 +41,7 @@ class HomePage extends StatelessWidget {
                   children: const <Widget>[
                     Expanded(
                       child: TextButtonComponent(
-                        text: "Moviments",
+                        text: "Movimentos",
                         color: Color(0xFF70B8F9),
                       ),
                     ),
@@ -48,7 +50,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Expanded(
                       child: TextButtonComponent(
-                        text: "Abilitys",
+                        text: "Habilidades",
                         color: Color(0xFFEB6025),
                       ),
                     )
