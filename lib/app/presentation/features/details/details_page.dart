@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../domain/entities/pokemon_entity.dart';
-import '../../shared/components/header_info_component.dart';
+import 'widgets/header_info_widget.dart';
 import '../../shared/components/round_container_component.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -25,15 +25,19 @@ class _DetailsPageState extends State<DetailsPage> {
             Container(
               decoration: const BoxDecoration(color: Color(0xFF282828)),
               child: Wrap(
-                children: const <Widget>[
+                children: [
                   SizedBox(
                     height: 295,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 64, left: 36, right: 36),
-                      child: HeaderInfo(),
+                      padding:
+                          const EdgeInsets.only(top: 64, left: 36, right: 36),
+                      child: HeaderInfoWidget(
+                        pokemonId: pokemon.id,
+                        pokemonName: pokemon.name,
+                      ),
                     ),
                   ),
-                  RoundContainer(),
+                  const RoundContainer(),
                 ],
               ),
             ),

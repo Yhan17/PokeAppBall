@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pokeappball/app/presentation/features/details/details_page.dart';
-import 'package:pokeappball/app/presentation/features/pokemon_list/widgets/pokemon_card_widget.dart';
+import '../details/details_page.dart';
+import 'widgets/pokemon_card_widget.dart';
 
 import '../../../infra/repositories/pokemon_repository_impl.dart';
 import '../../shared/theme/app_typohraphy.dart';

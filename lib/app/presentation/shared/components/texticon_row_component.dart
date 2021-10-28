@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokeappball/app/presentation/shared/theme/app_typohraphy.dart';
+import '../theme/app_typohraphy.dart';
 
 class TextIconRow extends StatelessWidget {
   final String text;
