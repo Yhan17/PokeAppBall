@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pokeappball/app/presentation/shared/components/header_info_component.dart';
-import 'package:pokeappball/app/presentation/shared/components/round_container_component.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+
+import '../../../domain/entities/pokemon_entity.dart';
+import '../../shared/components/header_info_component.dart';
+import '../../shared/components/round_container_component.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({
@@ -13,8 +17,7 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
-    final heightContainer = MediaQuery.of(context).size.height < 600 ? MediaQuery.of(context).size.height + 85 : MediaQuery.of(context).size.height+20;
-    
+    final PokemonEntity pokemon = Get.arguments;
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -35,13 +38,18 @@ class _DetailsPageState extends State<DetailsPage> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 140, left: 50),
-                child: Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      "assets/images/pikachuimg.png",
-                      width: 180,
-                    ))),
+              padding: const EdgeInsets.only(top: 140, left: 50),
+              child: Align(
+                alignment: Alignment.center,
+                child: Hero(
+                  tag: pokemon.image,
+                  child: SvgPicture.network(
+                    pokemon.image,
+                    width: 180,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

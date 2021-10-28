@@ -73,8 +73,8 @@ class PokemonModel {
       id: map['id'],
       name: map['name'],
       image: map['sprites']['other']['dream_world']['front_default'],
-      height: map['height'],
-      weight: map['weight'],
+      height: double.parse(map['height'].toString()),
+      weight: double.parse(map['weight'].toString()),
       moves:
           List<MoveModel>.from(map['moves']?.map((x) => MoveModel.fromMap(x))),
       abilities: List<AbilityModel>.from(

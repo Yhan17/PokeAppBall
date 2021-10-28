@@ -1,9 +1,9 @@
-import 'package:dio/adapter_browser.dart';
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 
 class PokemonClient extends DioMixin {
   @override
-  HttpClientAdapter get httpClientAdapter => BrowserHttpClientAdapter();
+  HttpClientAdapter get httpClientAdapter => DefaultHttpClientAdapter();
 
   @override
   BaseOptions get options => BaseOptions(

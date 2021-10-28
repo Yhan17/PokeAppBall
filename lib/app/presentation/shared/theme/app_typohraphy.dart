@@ -25,4 +25,9 @@ class AppTypography {
         fontSize: 14,
         fontWeight: FontWeight.bold,
       );
+  static TextStyle get pokemonId => GoogleFonts.poppins(
+        color: const Color(0xFFC1C1C1),
+        fontSize: 13,
+        fontWeight: FontWeight.bold,
+      );
 }

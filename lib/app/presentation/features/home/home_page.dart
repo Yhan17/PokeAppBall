@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokeappball/app/presentation/shared/components/information_row_component.dart';
-import 'package:pokeappball/app/presentation/shared/components/textbutton_component.dart';
-import 'package:pokeappball/app/presentation/shared/components/textfield_component.dart';
+import 'package:get/get.dart';
 
+import '../../shared/components/information_row_component.dart';
+import '../../shared/components/textbutton_component.dart';
+import '../../shared/components/textfield_component.dart';
 import '../../shared/theme/app_typohraphy.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,10 +30,10 @@ class HomePage extends StatelessWidget {
                 ),
                 TextButtonComponent(
                   onTap: () {
-                    Navigator.pushNamed(context, '/details');
+                    Get.toNamed('/list');
                   },
                   text: "Pokedex",
-                  color: Color(0xFF5EBF62),
+                  color: const Color(0xFF5EBF62),
                 ),
                 const SizedBox(
                   height: 5,
@@ -59,7 +60,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          InformationRow(),
+          const InformationRow(),
           Positioned(
             left: -50,
             top: MediaQuery.of(context).size.height - 260,
