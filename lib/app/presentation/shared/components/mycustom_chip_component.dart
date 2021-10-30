@@ -15,16 +15,13 @@ class MyCustomChip extends StatefulWidget {
 class _MyCustomChipState extends State<MyCustomChip> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8, top:5),
-      child: Chip(
-        label: Text(
-          widget.text,
-          style: const TextStyle(
-              color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: widget.color,
+    return Chip(
+      label: Text(
+        widget.text,
+        style: const TextStyle(
+            color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold),
       ),
+      backgroundColor: widget.color,
     );
   }
 }
