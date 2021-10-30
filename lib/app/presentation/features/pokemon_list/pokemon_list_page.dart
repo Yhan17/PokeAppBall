@@ -65,10 +65,12 @@ class PokemonListPage extends HookWidget {
                           padding: const EdgeInsets.only(right: 15),
                           child: Hero(
                             tag: controller.pokemonList[index].image,
-                            child: SvgPicture.network(
-                              controller.pokemonList[index].image,
-                              height: 65,
+                            child: SizedBox(
                               width: 65,
+                              height: 55,
+                              child: SvgPicture.network(
+                                controller.pokemonList[index].image,
+                              ),
                             ),
                           ),
                         ),
@@ -80,7 +82,7 @@ class PokemonListPage extends HookWidget {
                               style: AppTypography.textLarge,
                             ),
                             Text(
-                              '#0${controller.pokemonList[index].id}',
+                              '#00${controller.pokemonList[index].id}',
                               style: AppTypography.pokemonId,
                             )
                           ],
