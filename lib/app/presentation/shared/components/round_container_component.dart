@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:pokeappball/app/domain/entities/ability_entity.dart';
+import 'package:pokeappball/app/domain/entities/move_entity.dart';
 import 'texticon_row_component.dart';
-import '../theme/app_typohraphy.dart';
-import 'dart:math';
 import 'mycustom_chip_component.dart';
 
 class RoundContainer extends StatefulWidget {
+  final List<AbilityEntity> abilities;
+  final double height;
+  final double weight;
+  final List<MoveEntity> moves;
+
   const RoundContainer({
     Key? key,
+    required this.abilities,
+    required this.height,
+    required this.weight,
+    required this.moves,
   }) : super(key: key);
 
   @override
@@ -16,10 +25,6 @@ class RoundContainer extends StatefulWidget {
 class _RoundContainerState extends State<RoundContainer> {
   @override
   Widget build(BuildContext context) {
-    final heightContainer = MediaQuery.of(context).size.height < 600
-        ? MediaQuery.of(context).size.height
-        : MediaQuery.of(context).size.height + 30;
-
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
@@ -48,22 +53,21 @@ class _RoundContainerState extends State<RoundContainer> {
               ),
               const SizedBox(height: 5),
               SingleChildScrollView(
-                reverse: true,
-                scrollDirection: Axis.horizontal,
-                //Valores da row são ficticios para teste
-                child: Row(
-                  children: const [
-                    MyCustomChip(
-                      color: Color(0xFF282828),
-                      text: "static",
-                    ),
-                    MyCustomChip(
-                      color: Color(0xFF282828),
-                      text: "Lightning-rod",
-                    ),
-                  ],
-                ),
-              ),
+                  reverse: true,
+                  scrollDirection: Axis.horizontal,
+                  //Valores da row são ficticios para teste
+                  child: Wrap(
+                    spacing: 2,
+                    children: List<Widget>.generate(
+                      widget.abilities.length,
+                      (int idx) {
+                        return MyCustomChip(
+                          color: const Color(0xFF282828),
+                          text: widget.abilities[idx].name,
+                        );
+                      },
+                    ).toList(),
+                  )),
               const SizedBox(height: 10),
               const TextIconRow(
                 icon: Icon(
@@ -77,124 +81,23 @@ class _RoundContainerState extends State<RoundContainer> {
               const SizedBox(height: 5),
               Wrap(
                 alignment: WrapAlignment.spaceBetween,
-                children: const [
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "mega-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "thunder-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "pay-day",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "slam",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "headbutt",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "growl",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "take-down",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "mega-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "thunder-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "pay-day",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "slam",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "headbutt",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "growl",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "take-down",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "growl",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "take-down",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "mega-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "thunder-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "pay-day",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "slam",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "headbutt",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "growl",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "take-down",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "thunder-punch",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "pay-day",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "slam",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "headbutt",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF5EBF62),
-                    text: "growl",
-                  ),
-                  MyCustomChip(
-                    color: Color(0xFF282828),
-                    text: "take-down",
-                  ),
-                ],
+                spacing: 2,
+                runSpacing: 2,
+                children: List<Widget>.generate(
+                  widget.moves.length,
+                  (int idx) {
+                    if (idx % 2 == 0) {
+                      return MyCustomChip(
+                        color: const Color(0xFF282828),
+                        text: widget.moves[idx].name,
+                      );
+                    }
+                    return MyCustomChip(
+                      color: const Color(0xFF5EBF62),
+                      text: widget.moves[idx].name,
+                    );
+                  },
+                ).toList(),
               ),
               const SizedBox(height: 10),
               const TextIconRow(
@@ -231,8 +134,14 @@ class _RoundContainerState extends State<RoundContainer> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Altura\n\n(0,72 cm)'),
-                            Text('Peso\n\n(6.9 kg)')
+                            Text('Altura\n\n(${widget.height} cm)',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500)),
+                            Text(
+                              'Peso\n\n(${widget.weight} kg)',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w500),
+                            ),
                           ],
                         ),
                       ),

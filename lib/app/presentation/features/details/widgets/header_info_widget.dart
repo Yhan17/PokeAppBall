@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pokeappball/app/domain/entities/type_entity.dart';
 
 import '../../../shared/theme/app_typohraphy.dart';
 
 class HeaderInfoWidget extends StatelessWidget {
   final String pokemonName;
   final int pokemonId;
+  final List<TypeEntity> types;
+
   const HeaderInfoWidget({
     Key? key,
     required this.pokemonName,
     required this.pokemonId,
+    required this.types,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class HeaderInfoWidget extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                '#0$pokemonId',
+                '#00$pokemonId',
                 style: const TextStyle(
                   fontSize: 12,
                   color: Colors.green,
@@ -37,17 +41,25 @@ class HeaderInfoWidget extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        const Chip(
-          label: Text(
-            'Eletric',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 9,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          backgroundColor: Color(0xFF5EBF62),
-        ),
+        Wrap(
+          spacing: 2,
+          children: List<Widget>.generate(
+            types.length,
+            (int idx) {
+              return  Chip(
+                label: Text(
+                  types[idx].name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                backgroundColor: const Color(0xFF5EBF62),
+              );
+            },
+          ).toList(),
+        )
       ],
     );
   }

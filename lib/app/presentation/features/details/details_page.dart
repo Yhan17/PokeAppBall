@@ -19,6 +19,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     final PokemonEntity pokemon = Get.arguments;
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Stack(
           children: <Widget>[
@@ -27,29 +28,38 @@ class _DetailsPageState extends State<DetailsPage> {
               child: Wrap(
                 children: [
                   SizedBox(
-                    height: 295,
+                    height: 255,
                     child: Padding(
                       padding:
-                          const EdgeInsets.only(top: 64, left: 36, right: 36),
+                          const EdgeInsets.only(top: 5, left: 36, right: 36),
                       child: HeaderInfoWidget(
                         pokemonId: pokemon.id,
                         pokemonName: pokemon.name,
+                        types: pokemon.types,
                       ),
                     ),
                   ),
-                  const RoundContainer(),
+                  RoundContainer(
+                    abilities: pokemon.abilities,
+                    height: pokemon.height,
+                    weight: pokemon.weight,
+                    moves: pokemon.moves,
+                  ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 140, left: 50),
+              padding: const EdgeInsets.only(top: 140),
               child: Align(
                 alignment: Alignment.center,
                 child: Hero(
                   tag: pokemon.image,
-                  child: SvgPicture.network(
-                    pokemon.image,
-                    width: 180,
+                  child: SizedBox(
+                    height: 130,
+                    width: 130,
+                    child: SvgPicture.network(
+                      pokemon.image,
+                    ),
                   ),
                 ),
               ),
