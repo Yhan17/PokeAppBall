@@ -1,20 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../domain/core/failures/server_failures.dart';
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../../domain/repositories/pokemon_repository.dart';
 
-class PokemonListController extends GetxController {
+class PokemonListController extends GetxController
+    with StateMixin<List<PokemonEntity>> {
   final PokemonRepository repository;
   late List<PokemonEntity> pokemonList = [];
-
   PokemonListController({
     required this.repository,
   });
 
   Future<void> fetchPokemons() async {
-    final result = await repository.fetchPokemons(40);
-
+    change(null, status: RxStatus.loading());
+    final result = await repository.fetchPokemons(10);
     result.fold(
       (failure) {
         switch (failure) {
@@ -31,10 +32,12 @@ class PokemonListController extends GetxController {
             );
             break;
         }
+        change(null, status: RxStatus.error());
       },
-      (pokemonApiList) => pokemonList = pokemonApiList,
+      (pokemonApiList) {
+        pokemonList = pokemonApiList;
+        change(pokemonList, status: RxStatus.success());
+      },
     );
-
-    update();
   }
 }
