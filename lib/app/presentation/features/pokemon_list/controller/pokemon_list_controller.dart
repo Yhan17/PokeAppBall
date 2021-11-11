@@ -5,17 +5,25 @@ import '../../../../domain/core/failures/server_failures.dart';
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../../domain/repositories/pokemon_repository.dart';
 
-class PokemonListController extends GetxController
-    with StateMixin<List<PokemonEntity>> {
+class PokemonListController extends GetxController {
   final PokemonRepository repository;
-  late List<PokemonEntity> pokemonList = [];
+  final pokemonList = <PokemonEntity>[].obs;
+  final initialLoading = true.obs;
+  final pageLoading = false.obs;
+  final initial = 1.obs;
+  final limit = 10.obs;
+
   PokemonListController({
     required this.repository,
   });
 
-  Future<void> fetchPokemons() async {
-    change(null, status: RxStatus.loading());
-    final result = await repository.fetchPokemons(10);
+  Future<void> fetchPokemons({
+    GlobalKey<AnimatedListState>? listKey,
+  }) async {
+    final result = await repository.fetchPokemons(
+      initial.value,
+      limit.value,
+    );
     result.fold(
       (failure) {
         switch (failure) {
@@ -32,11 +40,20 @@ class PokemonListController extends GetxController
             );
             break;
         }
-        change(null, status: RxStatus.error());
       },
       (pokemonApiList) {
-        pokemonList = pokemonApiList;
-        change(pokemonList, status: RxStatus.success());
+        for (var i = 0; i < pokemonApiList.length; i++) {
+          pokemonList.add(pokemonApiList[i]);
+
+          if (listKey != null) {
+            listKey.currentState!.insertItem(
+              pokemonList.length - 1,
+              duration: const Duration(milliseconds: 700),
+            );
+          }
+        }
+        // if (pokemonList.isEmpty) {
+        // }
       },
     );
   }

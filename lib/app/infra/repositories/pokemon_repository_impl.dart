@@ -14,11 +14,13 @@ class PokemonRepositoryImpl extends PokemonRepository {
 
   @override
   Future<Either<ServerFailures, List<PokemonEntity>>> fetchPokemons(
-      int pokemons) async {
+    int initial,
+    int pokemons,
+  ) async {
     try {
       final List<PokemonEntity> pokemonList = [];
 
-      for (var i = 1; i <= pokemons; i++) {
+      for (var i = initial; i <= pokemons; i++) {
         final response = await client.get('pokemon/$i');
         pokemonList.add(PokemonModel.fromMap(response.data).toEntity());
       }

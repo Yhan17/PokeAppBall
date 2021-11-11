@@ -19,7 +19,7 @@ class AppRoutes {
         ),
         GetPage(
           name: '/list',
-          page: () => const PokemonListPage(),
+          page: () => PokemonListPage(),
         ),
         GetPage(
           name: '/details',
