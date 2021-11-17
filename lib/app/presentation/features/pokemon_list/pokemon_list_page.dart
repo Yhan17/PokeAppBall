@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../infra/repositories/pokemon_repository_impl.dart';
 import '../../shared/theme/app_typohraphy.dart';
 import '../details/details_page.dart';
@@ -27,7 +26,7 @@ class PokemonListPage extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Pokemons',
+          'POKÉMONS',
           style: AppTypography.textLarge,
         ),
       ),

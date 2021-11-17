@@ -30,7 +30,7 @@ class TextButtonComponentState extends State<TextButtonComponent> {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 color: widget.color,
-                borderRadius: const BorderRadius.all(Radius.circular(16))),
+                borderRadius: const BorderRadius.all(Radius.circular(12))),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(

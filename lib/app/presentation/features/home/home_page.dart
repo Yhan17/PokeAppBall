@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 57, left: 26, right: 26),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text("Digite abaixo o nome do pokemon que deseja buscar",
                     style: AppTypography.textLarge),
@@ -25,8 +26,27 @@ class HomePage extends StatelessWidget {
                   height: 17,
                 ),
                 const TextFieldComponent(),
+                const SizedBox(height: 11),
+                SizedBox(
+                  width: 101,
+                  height: 36,
+                  child: TextButton(
+                    child: const Text(
+                      'Buscar',
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                    ),
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: const Color(0xFFEB6025),
+                    ),
+                    onPressed: () {
+                      print('Pressed');
+                    },
+                  ),
+                ),
                 const SizedBox(
-                  height: 35,
+                  height: 28,
                 ),
                 TextButtonComponent(
                   onTap: () {
@@ -47,7 +67,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 5,
+                      width: 9,
                     ),
                     Expanded(
                       child: TextButtonComponent(

@@ -49,14 +49,14 @@ class _DetailsPageState extends State<DetailsPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 140),
+              padding: const EdgeInsets.only(top: 115),
               child: Align(
                 alignment: Alignment.center,
                 child: Hero(
                   tag: pokemon.image,
                   child: SizedBox(
-                    height: 130,
-                    width: 130,
+                    height: 169,
+                    width: 134,
                     child: SvgPicture.network(
                       pokemon.image,
                     ),

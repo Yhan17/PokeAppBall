@@ -46,65 +46,71 @@ class _RoundContainerState extends State<RoundContainer> {
                 icon: Icon(
                   Icons.local_fire_department,
                   color: Colors.white,
-                  size: 20,
+                  size: 25,
                 ),
                 text: 'Habilidades',
                 color: Color(0xFF9A1F29),
               ),
-              const SizedBox(height: 5),
-              SingleChildScrollView(
-                  reverse: true,
-                  scrollDirection: Axis.horizontal,
-                  //Valores da row são ficticios para teste
-                  child: Wrap(
-                    spacing: 2,
-                    children: List<Widget>.generate(
-                      widget.abilities.length,
-                      (int idx) {
-                        return MyCustomChip(
-                          color: const Color(0xFF282828),
-                          text: widget.abilities[idx].name,
-                        );
-                      },
-                    ).toList(),
-                  )),
+              const SizedBox(height: 2),
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: SingleChildScrollView(
+                    reverse: true,
+                    scrollDirection: Axis.horizontal,
+                    //Valores da row são ficticios para teste
+                    child: Wrap(
+                      spacing: 2,
+                      children: List<Widget>.generate(
+                        widget.abilities.length,
+                        (int idx) {
+                          return MyCustomChip(
+                            color: const Color(0xFF282828),
+                            text: widget.abilities[idx].name,
+                          );
+                        },
+                      ).toList(),
+                    )),
+              ),
               const SizedBox(height: 10),
               const TextIconRow(
                 icon: Icon(
                   Icons.directions_run,
                   color: Colors.white,
-                  size: 20,
+                  size: 25,
                 ),
                 text: 'Movimentos',
                 color: Color(0xFF5EBF62),
               ),
               const SizedBox(height: 5),
-              Wrap(
-                alignment: WrapAlignment.spaceBetween,
-                spacing: 2,
-                runSpacing: 2,
-                children: List<Widget>.generate(
-                  widget.moves.length,
-                  (int idx) {
-                    if (idx % 2 == 0) {
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: Wrap(
+                  alignment: WrapAlignment.spaceBetween,
+                  spacing: 2,
+                  runSpacing: 5,
+                  children: List<Widget>.generate(
+                    widget.moves.length,
+                    (int idx) {
+                      if (idx % 2 == 0) {
+                        return MyCustomChip(
+                          color: const Color(0xFF282828),
+                          text: widget.moves[idx].name,
+                        );
+                      }
                       return MyCustomChip(
-                        color: const Color(0xFF282828),
+                        color: const Color(0xFF5EBF62),
                         text: widget.moves[idx].name,
                       );
-                    }
-                    return MyCustomChip(
-                      color: const Color(0xFF5EBF62),
-                      text: widget.moves[idx].name,
-                    );
-                  },
-                ).toList(),
+                    },
+                  ).toList(),
+                ),
               ),
               const SizedBox(height: 10),
               const TextIconRow(
                 icon: Icon(
                   Icons.fitness_center,
                   color: Colors.white,
-                  size: 20,
+                  size: 25,
                 ),
                 text: 'Fisíco',
                 color: Colors.blue,
@@ -134,11 +140,11 @@ class _RoundContainerState extends State<RoundContainer> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Altura\n\n(${widget.height} cm)',
+                            Text('Altura\n\n(${widget.height / 10} m)',
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w500)),
                             Text(
-                              'Peso\n\n(${widget.weight} kg)',
+                              'Peso\n\n(${widget.weight / 10} kg)',
                               style:
                                   const TextStyle(fontWeight: FontWeight.w500),
                             ),
